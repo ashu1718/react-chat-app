@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import socketIOClient from 'socket.io-client';
+import React, { useState, useEffect } from "react";
+import socketIOClient  from "socket.io-client";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-const ENDPOINT = '';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+const ENDPOINT = 'http://localhost:3001';
 
 function App() {
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState('');
-  
   const socket = socketIOClient(ENDPOINT);
-
+  const sendMessage = () => {
+    console.log(inputText);
+    socket.emit("message", inputText);
+    setInputText('');
+  };
   useEffect(() => {
   
 
@@ -20,36 +23,31 @@ function App() {
    
   }, [messages,socket]);
 
- 
-  const sendMessage = () => {
-    console.log("Input Text:", inputText);
-    if (inputText.trim() !== '') {
-      socket.emit('message', inputText);
-      setInputText('');
-    }
-  };
-
   return (
     <>
-     
-        <h1>Chat App</h1>
-        <div className="content-class">
+      <h1>Chat App</h1>
+      <div className="content-class">
         <div className="output-class">
-          {messages.map((message, index) => (
-            <p  key={index} ><span className="message-class">{message}</span></p>
+        {messages.map((message, index) => (
+             <p key={index}>
+             <span className="message-class">{message}</span>
+           </p>
           ))}
+         
         </div>
         <div className="input-class">
           <input
-            className="form-control inputtag" id="floatingInput"
+            className="form-control inputtag"
+            id="floatingInput"
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            placeholder='Type a Message'
+            placeholder="Type a Message"
           />
-          <button className="send-button" onClick={sendMessage}>Send</button>
+          <button className="send-button" onClick={sendMessage}>
+            Send
+          </button>
         </div>
-        
       </div>
     </>
   );
