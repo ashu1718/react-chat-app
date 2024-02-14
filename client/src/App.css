@@ -37,26 +37,58 @@
   }
 }
 body{
-  background: rgb(56,148,100);
-  background: radial-gradient(circle, rgba(56,148,100,1) 0%, rgba(66,146,97,1) 99%, rgba(124,202,150,1) 100%);
+  background: #efe7dd url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") repeat;
+  z-index: 0;
+}
+.content-class{
+  text-align: center;
+  
+  width: 39%;
+  min-height: 700px;
+  margin-left: 30%;
 }
 h1{
-  color: #12372A;
+  color: #005e54;
+  margin-top: 10px;
+  font-weight: 700;
+  text-align: center;
 }
-.output{
-  width: 39%;
-  margin-top: 5px;
-  background-color: rgb(2, 20, 13);
-  text-align: right;
-  color: rgb(33, 232, 236);
-  border: solid 0.5px rgb(198, 182, 182);
-  border-radius: 10px;
-  padding-right: 15px;
-  min-height: 500px;
-  font-family: 'Lucida Handwriting';
-}
+
+
 .inputtag{
-  width: 30%;
+  width: 75%;
   display: inline;
   margin: 5px;
+  
+}
+.input-class{
+  position:relative;
+  margin-top: 85%;
+  
+  
+}
+
+.message-class{
+  color: black;
+  background-color: #BAB86C;
+  padding: 7px;
+  border-radius: 5px;
+  border: solid 0.5px white;
+}
+.output-class{
+  text-align: right;
+ 
+  margin-right: 10%;
+
+}
+.send-button{
+  text-decoration:none;
+  display:inline-block;
+  background:#25d366;
+  padding:8px 12px;
+  color:#fff;
+  font-weight:bold;
+  
+  letter-spacing:0.5px;
+  border-radius:9999px;
 }

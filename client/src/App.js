@@ -3,7 +3,7 @@ import socketIOClient from 'socket.io-client';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-const ENDPOINT = 'http://localhost:3000';
+const ENDPOINT = '';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -31,24 +31,26 @@ function App() {
 
   return (
     <>
-      <center>
-        <h1>Chat App by Ashutosh Mathur</h1>
-        <div>
+     
+        <h1>Chat App</h1>
+        <div className="content-class">
+        <div className="output-class">
+          {messages.map((message, index) => (
+            <p  key={index} ><span className="message-class">{message}</span></p>
+          ))}
+        </div>
+        <div className="input-class">
           <input
             className="form-control inputtag" id="floatingInput"
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
-            placeholder='enter chat'
+            placeholder='Type a Message'
           />
-          <button className="btn btn-success" onClick={sendMessage}>Send Message</button>
+          <button className="send-button" onClick={sendMessage}>Send</button>
         </div>
-         <div className="output">
-          {messages.map((message, index) => (
-            <h3 key={index} >{message}</h3>
-          ))}
-        </div>
-      </center>
+        
+      </div>
     </>
   );
 }

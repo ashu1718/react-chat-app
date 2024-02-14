@@ -1,12 +1,16 @@
 const express = require('express');
+const app = express();
 const http = require('http');
 const socketIo = require('socket.io');
- const cors = require('cors')
-
-const app = express();
+ const cors = require('cors');
 app.use(cors());
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server,{
+  cors:{
+    origin:"http://localhost:3000",
+    methods: ["GET","POST"],
+  },
+});
 
 
 io.on('connection', (socket) => {
@@ -21,6 +25,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log('Server is running on port 8000');
+server.listen(3001, () => {
+  console.log('Server is running on port 3000');
 });
